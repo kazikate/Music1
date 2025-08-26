@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="tr">      
+<head>      
+<meta charset="utf-8" />      
+<meta name="viewport" content="width=device-width, initial-scale=1" />      
+<title>İyi ki Doğdun, Elif 🎂</title>      
+<meta name="description" content="Sana özel küçük bir sürpriz." />    
+<link rel="preconnect" href="https://fonts.googleapis.com">      
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>      
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">    
+
+<style>      
+:root{      
+  --bg: #0b0b10;      
+  --card: #12121a;      
+  --text: #f0f3f8;      
+  --muted: #c2c7d3;      
+  --primary: #9b5cff;      
+  --primary-2: #35d1ff;      
+  --accent: #ff7ac3;      
+  --glow: 0 0 40px rgba(155,92,255,.35), 0 0 80px rgba(53,209,255,.25);      
+  --radius: 22px;      
+}      
+*{box-sizing:border-box;}
+html, body{
+margin:0;
+padding:0;
+overflow-x:hidden;
+font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+color: var(--text);
+background: radial-gradient(1200px 800px at 100% -10%, rgba(155,92,255,.08), transparent),
+radial-gradient(800px 600px at -10% 110%, rgba(53,209,255,.08), transparent),
+var(--bg);
+line-height:1.6;
+}
+
+.wrap{
+max-width:960px;
+margin:0 auto;
+padding:24px;
+min-height:100%;
+background: linear-gradient(to bottom, rgba(155,92,255,0.08) 0%, rgba(53,209,255,0.08) 30%, rgba(11,11,16,1) 100%);
+position: relative;
+}
+
+header.card {
+  position: relative;
+  border-radius: var(--radius);
+  padding: 20px 24px 20px;
+  background: linear-gradient(160deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  backdrop-filter: blur(6px);
+  box-shadow: var(--glow);
+  overflow: visible;
+}
+
+/* Ortak stil */
+header.card::before,
+header.card::after {
+  content:"";
+  position:absolute;
+  width:150px;   /* daha küçük */
+  height:150px;
+  border-radius:50%;
+  filter: blur(25px); /* daha yumuşak ama fazla taşmayan */
+  top:50%;
+  left:50%;
+  transform-origin: center;
+}
+
+/* Mor glow → sol alt */
+header.card::before {
+  background: rgba(155,92,255,0.3);
+  animation: orbit-mor 1s linear forwards;
+}
+
+/* Mavi glow → sağ üst */
+header.card::after {
+  background: rgba(53,209,255,0.3);
+  animation: orbit-mavi 1s linear forwards;
+}
+
+/* Mor için ayrı animasyon */
+@keyframes orbit-mor {
+  from { transform: translate(-50%, -50%) rotate(65deg) translate(-200px, 120px); }
+  to   { transform: translate(-50%, -50%) rotate(0deg) translate(-200px, 120px); }
+}
+
+/* Mavi için ayrı animasyon (180° farklı başlar) */
+@keyframes orbit-mavi {
+  from { transform: translate(-50%, -50%) rotate(245deg) translate(-200px, 120px); }
+  to   { transform: translate(-50%, -50%) rotate(180deg) translate(-200px, 120px); }
+}
+
+
+header.card > * { position: relative; z-index:1; }
+.badge{ display:inline-flex; gap:8px; align-items:center; color:var(--muted); font-size:16px; padding:10px 14px; border-radius:999px; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); }
+.title{ font-family:'Pacifico', cursive; font-size:clamp(36px,8vw,64px); line-height:1.5; margin:15px 0 25px; font-weight:500; letter-spacing:.2px; display:inline-block; padding-bottom: 0.30em; padding: 0.25em 0.08em; background: linear-gradient(90deg, var(--primary), var(--primary-2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.subtitle{ margin:0; color:var(--muted); font-size:clamp(14px,2.6vw,18px); }
+.actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; align-items:center; }
+.btn{ cursor:pointer; padding:14px 20px; border-radius:14px; border:1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); color:var(--text); font-weight:600; transition: .2s transform,.2s background,.2s border; font-size:16px; }
+.btn:hover{ transform:translateY(-1px); background: rgba(255,255,255,.07); }
+.btn.primary{ background: linear-gradient(135deg, var(--primary), var(--primary-2)); border:none; box-shadow:0 10px 30px rgba(155,92,255,.3); }
+.btn:focus { outline: none; -webkit-tap-highlight-color: transparent; }
+@keyframes press { 0% { transform: scale(1); } 50% { transform: scale(0.95); } 100% { transform: scale(1); } }
+.btn.press { animation: press 0.2s ease; }
+section{margin-top:20px;}
+.card{background:linear-gradient(160deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:20px; opacity:0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease;}
+.card.reveal{opacity:1; transform: translateY(0);}
+.fancy{ font-family:'Pacifico', cursive; background: linear-gradient(90deg, var(--accent), var(--primary)); -webkit-background-clip:text; color:transparent; font-size:28px; font-weight:400; margin-left:4px; }
+.type{min-height:48px; font-size:clamp(16px,2.6vw,20px);}
+#typewriter{ display: block; text-align: left; }
+.caret{ display:inline-block; width:10px; background:currentColor; animation:blink 1s steps(1) infinite; vertical-align: middle; }
+.grid{display:grid; gap:18px; grid-template-columns: repeat( auto-fit, minmax(220px,1fr) );}
+.polaroid{ position:relative; background:rgba(255,255,255,.05); color:var(--text); border-radius:14px; padding:12px; box-shadow:0 14px 30px rgba(0,0,0,.35); opacity:0; transform: translateY(20px) rotate(var(--rot,-2deg)); transition: opacity 0.6s ease, transform 0.6s ease; }
+.polaroid.reveal{ opacity:1; transform: rotate(var(--rot,-2deg)) translateY(0); }
+.polaroid:hover{ transform:rotate(0) translateY(-2px) }
+.polaroid img{ width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:10px; }
+.polaroid .cap{ margin-top:6px; text-align:center; font-weight:600; font-size:13px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.timeline{position:relative; padding-left:22px}
+.timeline:before{ content:""; position:absolute; left:10px; top:4px; bottom:4px; width:2px; background:linear-gradient(var(--primary), transparent); }
+.t-item{ position:relative; margin:16px 0; padding:12px 12px 12px 16px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:14px; opacity:0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.t-item.reveal{ opacity:1; transform: translateY(0); }
+.t-item:before{ content:""; position:absolute; left:-6px; top:14px; width:12px; height:12px; border-radius:50%; background:var(--primary); }
+footer{ margin:28px 0 8px; text-align:center; color:var(--muted); font-size:13px; }
+#confetti{ position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
+#musicIcon{ display:none; margin-left:12px; font-size:18px; animation:bounce 1s infinite alternate; }
+@keyframes bounce{ 0%{transform:translateY(0);} 100%{transform:translateY(-4px);} }
+@keyframes blink{ 0%,50%,100%{opacity:1;} 25%,75%{opacity:0;} }
+</style>    
+</head>
+
+<body>
+<div class="wrap">
+  <canvas id="confetti"></canvas>        
+  <header class="card">      
+    <span class="badge">📅 5 Eylül 2025</span>      
+    <h1 class="title">İyi ki doğdun, Elif!</h1>      
+    <p class="subtitle">Bu sayfayı senin için hazırladım. Küçük ama kalpten bir armağan✨</p>      
+    <div class="actions">      
+      <button class="btn primary" id="revealMsg">Mesajı Göster 💌</button>      
+      <span id="musicIcon">🎵</span>      
+    </div>      
+    <audio id="player" preload="auto"></audio>      
+  </header>  
+
+  <section class="card">      
+    <h3>💬 <span class="fancy">Mesaj</span></h3>      
+    <div class="type" id="typewriter" aria-live="polite"></div>      
+  </section>        
+
+  <section class="card">      
+    <h3>📸 <span class="fancy">Minik bir galeri</span></h3>      
+    <div class="grid" id="gallery">      
+      <figure class="polaroid" style="--rot:-3deg">      
+        <img src="https://iili.io/Kd4U6J4.md.jpg" alt="Fotoğraf 1"/>      
+        <figcaption class="cap">25.08.2025</figcaption>      
+      </figure>      
+      <figure class="polaroid" style="--rot:2deg">      
+        <img src="https://iili.io/Kd46FXS.md.jpg" alt="Fotoğraf 2"/>      
+        <figcaption class="cap">18.08.2025</figcaption>      
+      </figure>      
+    </div>      
+  </section>        
+
+  <section class="card">      
+    <h3>🕰️ <span class="fancy">Küçük Zaman Çizelgesi</span></h3>      
+    <div class="timeline" id="timeline">      
+      <div class="t-item"><strong>Tanıştığımız gün</strong> — Biraz garip bir tanışma olmuştu ama iyiki tanışmışız.</div>      
+      <div class="t-item"><strong>İlk uzun sohbet</strong> — Seninle sohbet etmeyi gerçekten seviyorum. Samimi davranman gerçekten çok hoş. Sıkılmadan sohbet ettiğim sayılı kişilerdensin.</div>      
+      <div class="t-item"><strong>Bugün</strong> — Bu minik sayfayı senin için hazırladım. (Umarım beğenirsin)</div>      
+    </div>      
+  </section>        
+
+  <section class="card">      
+    <h3>🌌 <span class="fancy">Küçük Notlar</span></h3>      
+    <ul id="notes">      
+      <li>Samimi tavrını asla kaybetme çünkü bu yönün harika.</li>      
+      <li>İyi kalpli olduğuna inanıyorum ve bu yüzden sana değer veriyorum.</li>      
+      <li>İyi ki varsın...</li>      
+    </ul>      
+  </section>        
+
+  <footer>      
+    <p>© 2025 Azad • Sadece minik bir hediye...</p>      
+    <p>(Fotoğrafları storylerden ss aldım. Rahatsız olduysan özür dilerim.)</p>      
+  </footer>      
+</div>
+
+<script>
+// Typewriter
+const $ = sel => document.querySelector(sel);
+const lines = [
+"Sevgili Elif,",
+"Bugün senin günün. Umarım bu küçük sayfa seni mutlu eder.",
+"İyi ki doğdun. İyi ki yollarımız kesişti.",
+"Dilerim önündeki bu yılı mutlu ve huzurlu bir şekilde geçirirsin.",
+"~Azad"
+];
+
+let i=0, j=0;
+const speed = 30, hold = 900;
+const el = $('#typewriter');
+
+const heart = document.createElement('img');
+heart.src = "https://iili.io/KdsFguj.md.png";
+heart.style.width = '28px';
+heart.style.height = '28px';
+heart.style.marginRight = '4px';
+heart.style.verticalAlign = 'middle';
+heart.style.opacity = 0;
+heart.style.transition = 'opacity 0.3s ease';
+
+const caret = document.createElement('span');
+caret.className = 'caret';
+caret.innerHTML = '\u00A0';
+el.appendChild(caret);
+
+function type(){
+  if(i < lines.length){
+    if(j <= lines[i].length){
+      el.innerHTML = lines[i].slice(0,j);
+      el.appendChild(caret);
+      if (navigator.vibrate) navigator.vibrate(3);
+      if(i === lines.length-1 && j === lines[i].length){
+        heart.style.opacity = 1;
+        el.appendChild(heart);
+        el.appendChild(caret);
+      }
+      j++;
+      setTimeout(type, speed);
+    } else {
+      setTimeout(()=>{i++; j=0; type();}, hold);
+    }
+  }
+}
+
+// Müzik
+const player = $('#player');
+player.src = "https://raw.githubusercontent.com/kazikate/Music1/cd08618eb883f54b45c3d00f4006d0d8d2f4ba21/The%20Girl%20Who%20Fell%20from%20the%20Sky%28MP3_320K%29.mp3";
+
+$('#revealMsg').addEventListener('click', ()=>{
+  el.innerHTML=''; i=0; j=0; el.appendChild(caret); type();
+  $('#musicIcon').style.display='inline-block';
+
+  const btn = $('#revealMsg');
+  btn.classList.remove('press'); void btn.offsetWidth; btn.classList.add('press');
+
+  player.play();
+});
+
+// PNG konfeti
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+let W, H;
+function resizeCanvas() {
+  const wrap = document.querySelector(".wrap");
+  W = canvas.width = wrap.offsetWidth;
+  H = canvas.height = wrap.offsetHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+let confs = [];
+const img = new Image();
+img.src = "https://iili.io/KdsFguj.md.png";
+
+function spawn(n = 100) {
+  for (let i = 0; i < n; i++) {
+    confs.push({
+      x: Math.random() * W,
+      y: -20 - Math.random() * H,
+      size: 20 + Math.random() * 20,
+      vy: 2 + Math.random() * 3,
+      vx: Math.random() * 2 - 1,
+      rot: Math.random() * Math.PI * 2,
+      dRot: (Math.random() * 0.04) + 0.01
+    });
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  confs.forEach(p => {
+    p.y += p.vy;
+    p.x += p.vx;
+    p.rot += p.dRot;
+
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot);
+    ctx.drawImage(img, -p.size/2, -p.size/2, p.size, p.size);
+    ctx.restore();
+  });
+
+  confs = confs.filter(p => p.y < H + 50);
+  if (confs.length > 0) requestAnimationFrame(draw);
+}
+
+spawn(100);
+draw();
+
+// Scroll efektleri
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('reveal');
+    } else {
+      entry.target.classList.remove('reveal');
+    }
+  });
+},{ threshold: 0.1 });
+
+document.querySelectorAll('.card, .polaroid, .t-item').forEach(el => observer.observe(el));
+</script>    
+</body>
+</html>
